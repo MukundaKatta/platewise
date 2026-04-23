@@ -1,22 +1,47 @@
 # Platewise
 
-> Your dietician, in your camera roll.
+Photo-to-nutrition tracking for everyday meals. Snap your plate, see macros, get a friendlier suggestion for tomorrow.
 
-Snap your plate. See macros, calories, and nutrient gaps. Get a friendlier suggestion for tomorrow.
+**Status:** v0 skeleton — landing page + photo macro route. Real vision AI not yet wired.
 
-## What you get
+**Landing:** https://platewise.vercel.app
 
-- **Photo-to-nutrition** — Identifies what you ate and roughly how much. Not perfect — but closer than guessing.
-- **Weekly patterns** — See where your protein drops, where your fiber lives, where the Friday pizza hits.
-- **Coached, not shamed** — No calorie-screaming. Small suggestions that actually stick.
+---
 
-## Category
+## Stack
 
-Health. Part of a 50-product exploration of high-demand consumer and SMB markets.
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 |
+| Fonts | Inter via `next/font/google` |
+| Hosting | Vercel (zero config) |
+| Waitlist | https://waitlist-api-sigma.vercel.app |
 
-## Status
+## Run locally
 
-Landing page live with interactive demo and functional waitlist.
+```bash
+pnpm install
+pnpm dev
+```
 
-- **Live:** https://mukundakatta.github.io/platewise/
-- **Waitlist API:** https://waitlist-api-sigma.vercel.app/api/waitlist
+Open http://localhost:3000.
+
+## Deploy
+
+Push to `main` — Vercel picks it up automatically. No environment variables required.
+
+## Routes
+
+| Route | Description |
+|---|---|
+| `/` | Landing page (original copy + design preserved) |
+| `/try` | v0 plate photo upload — select a photo, see mocked macros |
+| `/api/waitlist` | `POST { email, product: "platewise" }` → forwards to waitlist-api-sigma |
+
+## What's next
+
+- Wire real vision AI (photo → nutrition) behind `/try`
+- Per-user meal history and weekly pattern dashboard
+- Auth + progress tracking
